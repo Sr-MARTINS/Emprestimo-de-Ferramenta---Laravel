@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('apelido')->nullable();
             $table->string('cpf', 11);
             $table->string('setor', 50);
-            $table->string('cargo', 50);
             $table->string('status', 50);
             $table->timestamps();
         });

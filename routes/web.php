@@ -15,3 +15,6 @@ Route::post('ferramenta/join/{id}', [FerramentController::class, 'join'])->middl
 Route::delete('ferramenta/devolver/{id}', [FerramentController::class, 'devolver'])->middleware('auth');
 
 Route::get('/funcionario', [FuncionarioController::class, 'index']);
+Route::get('/funcionario/register', [FuncionarioController::class, 'register']);
+Route::post('/funcionario/register/save', [FuncionarioController::class, 'save']);
+Route::delete('/funcionario/delete/{id}', [FuncionarioController::class, 'delete']);

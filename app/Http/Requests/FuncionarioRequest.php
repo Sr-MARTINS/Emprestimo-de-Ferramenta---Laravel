@@ -11,7 +11,7 @@ class FuncionarioRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,28 @@ class FuncionarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome'   => 'required|min:3|max:50',
+            'cpf'    => 'required|size:11',
+            'setor'  => 'required|min:5|max:50',
+            'status' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nome.required' => 'O campo com preenchimento obrigatorio',
+            'nome.min' => 'O campo deve ter no minimo 3 caracteres',
+            'nome.max' => 'O campo deve ter no max 50 caracteres',
+
+            'cpf.required' => 'O campo com preenchimento obrigatorio',
+            'cpf.size' => 'O cpf deve ter 11 caracteres',
+            
+            'setor.required' => 'O campo com preenchimento obrigatorio',
+            'setor.min'      => 'O campo deve ter no minimo 5 caracteres',
+            'setor.max'      => 'O campo deve ter no max 50 caracteres',
+        
+            'status.required' => 'O campo deve ser preenchido',
         ];
     }
 }

@@ -51,8 +51,8 @@
                     Funcionarios
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item active" href="#">Lista de funcionarios</a></li>
-                    <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+                    <li><a class="dropdown-item active" href="/funcionario">Lista de funcionarios</a></li>
+                    <li><a class="dropdown-item" href="/funcionario/register">Cadastrar</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Separated link</a></li>
