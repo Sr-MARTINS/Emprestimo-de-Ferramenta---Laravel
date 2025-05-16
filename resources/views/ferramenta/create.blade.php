@@ -4,13 +4,13 @@
 
 @section('content')
 
-    <div style="display:flex;align-items:center;justify-content:center; flex-direction:column">
+    <div class="d-flex align-items-center justify-content-center flex-column">
         <div style="margin: 1rem auto 2rem auto;">
             <a href="/">Voltar</a>
             <h1>Cadastro de ferramenta</h1>
         </div>
 
-        <div style=" display:flex;align-items:center;justify-content:center; margin: 0 auto 2rem auto;">
+        <div class="d-flex align-items-center justify-content-center mx-auto mb-4">
             <form style="width: 500px;" action="/ferramenta" method="POST">
                 @csrf
                 <div class="mb-3">

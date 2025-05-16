@@ -28,18 +28,24 @@ class FerramentController extends Controller
         $ferramenta->descricao = $request->inDescription;
         $ferramenta->status      = $request->status;
 
+        $user = auth()->user();
+        $ferramenta->user_id = $user->id;
+
         $ferramenta->save();
 
         return redirect('/');
     }
 
-    public function showEdit($id)
+    public function edit($id)
     {
-        // $pegarFerramenta = Ferramenta::all();
-        
+        $user = auth()->user();
+
         $editFerrament = Ferramenta::findOrFail($id);
 
-        // dd($editFerrament->ferramenta);
+        if($user->id != $editFerrament->user_id) {
+            return redirect('/dashboard');
+        }
+
         return view('ferramenta.edit', ['editFerrament' => $editFerrament]);
     }
     public function update(Request $request, $id)
@@ -48,8 +54,22 @@ class FerramentController extends Controller
 
         Ferramenta::findOrFail($id)->update($restTodos);
         
-        return redirect('/');
+        return redirect('/dashboard');
     }
+
+    public function dashboard()
+    {
+        $user = auth()->user();
+
+        $ferramentas = $user->ferramentas;
+        
+        $EpFerramenta = $user->ferramentaMult;
+
+        return view('ferramenta.dashboard',
+         ['ferramentas' => $ferramentas, 'EpFerramenta' => $EpFerramenta]
+        );
+    }
+
 
     public function delete($id)
     {
@@ -57,6 +77,27 @@ class FerramentController extends Controller
 
         $deleteFerramenta->delete();
 
-        return redirect('/');
+        return redirect('/dashboard');
+    }
+
+
+    public function join($id) 
+    {
+        $user = auth()->user();
+
+        $user->ferramentaMult()->attach($id);
+
+        return redirect('/dashboard');
+    }
+
+    public function devolver($id)
+    {
+        $user = auth()->user();
+
+        $user->ferramentaMult()->detach($id);
+
+        // $DvFerramenta = Ferramenta::findOrFail($id);
+        
+        return redirect('/dashboard');
     }
 }

@@ -19,9 +19,21 @@
          <header>
             <nav class="nav">
                 <a class="nav-link active" aria-current="page" href="/">Eventos</a>
-                <a class="nav-link" href="/events/create">Criar Eventos</a>
-                <a class="nav-link" href="/login">Entrar</a>
-                <a class="nav-link"  href="/register">Cadastrar</a>
+                <a class="nav-link" href="/ferramenta/create">Cadastrar Ferramento</a>
+
+                @auth
+                    <a class="nav-link" href="/dashboard">Minhas Ferramentas</a>
+                    <form action="/logout" method="POST">
+                        @csrf
+                            <a class="nav-link" href="/logout" onclick="event.preventDefault(); 
+                                this.closest('form').submit();">Sair</a>
+                    </form>
+                @endauth
+
+                @guest
+                    <a class="nav-link" href="/login">Entrar</a>
+                    <a class="nav-link"  href="/register">Cadastrar</a>
+                @endguest
             </nav>
         </header>
         <div>
