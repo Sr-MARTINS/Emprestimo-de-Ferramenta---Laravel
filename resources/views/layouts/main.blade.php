@@ -13,6 +13,9 @@
         <!-- Styles -->
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
         
     </head>
     <body>
@@ -35,19 +38,36 @@
                     <a class="nav-link"  href="/register">Cadastrar</a>
                 @endguest
             </nav>
-            @auth
+            <!-- @auth
                 <div style="margin-right: 15px;">
                     <button>
                         Perfil
                     </button>
                 </div>
-            @endauth
+            @endauth -->
+            <div style="margin-right: 15px;">
+                <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Funcionarios
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item active" href="#">Lista de funcionarios</a></li>
+                    <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+            </div>
+            </div>
         </header>
+            
         <div>
             @yield('content')
         </div>
         <!-- <footer>
             <p>Rodape</p>
         </footer> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     </body>
 </html>
