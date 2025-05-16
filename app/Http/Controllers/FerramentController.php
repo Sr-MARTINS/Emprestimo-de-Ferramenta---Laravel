@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FerramentaCreateRequest;
 use App\Models\Ferramenta;
 use Illuminate\Http\Request;
 
@@ -20,12 +21,31 @@ class FerramentController extends Controller
         return view('ferramenta.create');
     }
 
-    public function show(Request $request)
+    public function store(FerramentaCreateRequest $request)
     {
+        // $request->validate(
+        //     [
+        //         'inFerramenta' => "required|min:5|max:50",
+        //         'inDescription' => "required|min:3|max:50",
+        //         'status' => "required"
+        //     ], 
+            // [
+            //     'inFerramenta.required' => 'O campo é obrigatorio', 
+            //     'inFerramenta.min' => 'O campo espera no minino 5 caracteres', 
+            //     'inFerramenta.max' => 'O campo espera no maximo 50 caracteres' ,
+
+            //     'inDescription.required' => 'O campo é obrigatorio',
+            //     'inDescription.min' => 'O campo espera no minimo 3 caracteres',
+            //     'inDescription.max' => 'O campo espera no maximo 50 caracteres',
+
+            //     'status.required' => 'Preencha o campo'
+            // ]
+        // );
+
         $ferramenta = new Ferramenta();
         
-        $ferramenta->ferramenta  = $request->inFerramenta;
-        $ferramenta->descricao = $request->inDescription;
+        $ferramenta->ferramenta  = $request->ferramenta;
+        $ferramenta->descricao   = $request->descricao;
         $ferramenta->status      = $request->status;
 
         $user = auth()->user();
@@ -33,7 +53,7 @@ class FerramentController extends Controller
 
         $ferramenta->save();
 
-        return redirect('/');
+        return redirect('/')->with(['success' => "Ferramenta cadastrada com sucesso!"]);
     }
 
     public function edit($id)
@@ -48,10 +68,10 @@ class FerramentController extends Controller
 
         return view('ferramenta.edit', ['editFerrament' => $editFerrament]);
     }
-    public function update(Request $request, $id)
+    public function update(FerramentaCreateRequest $request, $id)
     {
         $restTodos = $request->all();
-
+        
         Ferramenta::findOrFail($id)->update($restTodos);
         
         return redirect('/dashboard');
@@ -95,8 +115,6 @@ class FerramentController extends Controller
         $user = auth()->user();
 
         $user->ferramentaMult()->detach($id);
-
-        // $DvFerramenta = Ferramenta::findOrFail($id);
         
         return redirect('/dashboard');
     }

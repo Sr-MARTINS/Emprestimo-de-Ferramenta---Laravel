@@ -5,14 +5,15 @@
 @section('content')
 
     <div class="d-flex align-items-center justify-content-center">
-        <div>
-            <div>
-                <div>
-                    <h1>Meus eventos</h1>
-                    <a href="/user/perfil/">Perfil</a>
+        <div style="width: 100%;">
+            <div style="width: 100%; display:flex; align-items:center; flex-direction:column">
+
+                <div style="margin:1.5rem auto 0 auto">
+                    <h1>MInhas Ferramentas</h1>
                 </div>
+
                 @if(count($ferramentas) > 0)
-                    <table class="table" style="width:500px">
+                    <table class="table" style="width:80%">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -24,7 +25,6 @@
                         </thead>
                         <tbody>
                             @foreach($ferramentas as $item)
-                        
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $item->ferramenta }}</td>
@@ -45,14 +45,35 @@
                                     </td>
                                 </tr>
                             @endforeach
+
+                            @if($EpFerramenta)
+                                @foreach($EpFerramenta as $item)
+                                    <tr>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $item->ferramenta }}</td>
+                                        <td>{{ $item->descricao}}</td>
+                                        <td>{{ $item->status}}</td>
+                                        <td style="display: flex;">
+                                            <form action="/ferramenta/devolver/{{ $item->id }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" style="background-color: #fff; border:1px solid #E4E4E5;"> 
+                                                        <i class="bi bi-trash"></i> Devolver
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 @else
                     <p>Voce nao possui Ferramenta <a href="/ferramenta/create">Cadastrar Ferramenta</a></p>
                 @endif
         </div>
-        <hr>
-        <div>
+        <!-- <hr>
+
+        <div style="width: 100%; display:flex; align-items:center; flex-direction:column">
             <div>
                 <h2>Ferramenta Emprestada</h2>
             </div>
@@ -95,7 +116,7 @@
                 </div>
             @endif
         </div>
-        </div>
+        </div> -->
         
     </div>
 

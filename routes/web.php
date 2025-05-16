@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FerramentController::class, 'index']);
 Route::get('/ferramenta/create', [FerramentController::class, 'create'])->middleware('auth');
-Route::post('/ferramenta', [FerramentController::class, 'show']);
+Route::post('/ferramenta', [FerramentController::class, 'store']);
 Route::get('/ferramenta/edit/{id}', [FerramentController::class, 'edit']);
 Route::put('/ferramenta/update/{id}', [FerramentController::class, 'update'])->middleware('auth');
 Route::delete('/ferramenta/delete/{id}', [FerramentController::class, 'delete'])->middleware('auth');

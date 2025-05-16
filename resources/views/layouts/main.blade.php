@@ -16,10 +16,10 @@
         
     </head>
     <body>
-         <header>
-            <nav class="nav">
-                <a class="nav-link active" aria-current="page" href="/">Eventos</a>
-                <a class="nav-link" href="/ferramenta/create">Cadastrar Ferramento</a>
+         <header style="display: flex; align-items:center; justify-content:space-between">
+            <nav class="nav" >
+                <a class="nav-link active" aria-current="page" href="/">Ferramentas</a>
+                <a class="nav-link" href="/ferramenta/create">Cadastrar Ferramenta</a>
 
                 @auth
                     <a class="nav-link" href="/dashboard">Minhas Ferramentas</a>
@@ -35,6 +35,13 @@
                     <a class="nav-link"  href="/register">Cadastrar</a>
                 @endguest
             </nav>
+            @auth
+                <div style="margin-right: 15px;">
+                    <button>
+                        Perfil
+                    </button>
+                </div>
+            @endauth
         </header>
         <div>
             @yield('content')
