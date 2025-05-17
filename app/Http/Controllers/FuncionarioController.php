@@ -38,8 +38,16 @@ class FuncionarioController extends Controller
     public function edit($id)
     {
         $EditFuncionario = Funcionario::findOrfail($id);
+        // dd($EditFuncionario);
+        return view('funcionario.register', ['EditFuncionario' => $EditFuncionario]);
+    }
 
-        return view('painel', ['EditFuncionario' => $EditFuncionario]);
+    public function update(Request $request, $id)
+    {
+        $funcionario = Funcionario::findOrFail($id);
+        $funcionario->update($request->all());
+
+        return redirect('/funcionario')->with(['success' => 'Cadastrado editado sucesso!']);
     }
 
     public function delete($id)

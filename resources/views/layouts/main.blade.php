@@ -23,12 +23,10 @@
             <nav class="nav" >
                 <a class="nav-link active" aria-current="page" href="/">Ferramentas</a>
                 <a class="nav-link" href="/ferramenta/create">Cadastrar Ferramenta</a>
-
                 @auth
                     <a class="nav-link" href="/dashboard">Minhas Ferramentas</a>
-                    
                 @endauth
-
+                
                 @guest
                     <a class="nav-link" href="/login">Entrar</a>
                     <a class="nav-link"  href="/register">Cadastrar</a>
@@ -41,8 +39,12 @@
                             Funcionarios
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item active" href="/funcionario">Lista de funcionarios</a></li>
-                            <li><a class="dropdown-item" href="/funcionario/register">Cadastrar</a></li>
+                            <li><a class="dropdown-item active" href="/funcionario">
+                                Lista de funcionarios</a>
+                            </li>
+                            <li><a class="dropdown-item" href="/funcionario/register">
+                                Cadastrar</a>
+                            </li>
                             <li>
                                 <form action="/logout" method="POST">
                                     @csrf

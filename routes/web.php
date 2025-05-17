@@ -15,7 +15,8 @@ Route::post('ferramenta/join/{id}', [FerramentController::class, 'join'])->middl
 Route::delete('ferramenta/devolver/{id}', [FerramentController::class, 'devolver'])->middleware('auth');
 
 Route::get('/funcionario', [FuncionarioController::class, 'index']);
-Route::get('/funcionario/register', [FuncionarioController::class, 'register']);
-Route::post('/funcionario/register/save', [FuncionarioController::class, 'save']);
-Route::get('/funcionario/edit/{id}', [FuncionarioController::class, 'edit']);
+Route::get('/funcionario/register', [FuncionarioController::class, 'register'])->name('funcionarios.register');
+Route::post('/funcionario/register/save', [FuncionarioController::class, 'save'])->name('funcionarios.save');
+Route::get('/funcionario/edit/{id}', [FuncionarioController::class, 'edit'])->name('funcionarios.edit');
+Route::put('/funcionario/update/{id}', [FuncionarioController::class, 'update'])->name('funcionarios.update');
 Route::delete('/funcionario/delete/{id}', [FuncionarioController::class, 'delete']);
