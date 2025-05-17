@@ -6,14 +6,16 @@
 
     <div class="d-flex align-items-center justify-content-center flex-column">
         <div  style="margin: 2rem auto; text-align:center;">
-            <h2>Cadastro de funcionario</h2>
+            @if(isset($EditFuncionario))
+                <h2>Edição do funcionario: {{ $EditFuncionario->nome }}</h2>
+            @else
+                <h2>Cadastro de funcionario</h2>
+            @endif
         </div>
 
         <div class="mx-auto mb-4" style="width: 710px;">
-                <!-- /funcionario/register/save -->
-                 
-            <form action="{{ isset($EditFuncionario) ? route('funcionarios.update', $EditFuncionario->id) : route('funcionarios.save') }}" method="POST" style="width:65%; margin:auto">
-
+        
+            <form action="{{ isset($EditFuncionario) ? route('funcionario.update', $EditFuncionario->id) : route('funcionario.save') }}" method="POST" style="width:65%; margin:auto">
 
                 @csrf
                 @if(isset($EditFuncionario))

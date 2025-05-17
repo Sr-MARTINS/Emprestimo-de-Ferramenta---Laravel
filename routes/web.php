@@ -15,8 +15,11 @@ Route::post('ferramenta/join/{id}', [FerramentController::class, 'join'])->middl
 Route::delete('ferramenta/devolver/{id}', [FerramentController::class, 'devolver'])->middleware('auth');
 
 Route::get('/funcionario', [FuncionarioController::class, 'index']);
-Route::get('/funcionario/register', [FuncionarioController::class, 'register'])->name('funcionarios.register');
-Route::post('/funcionario/register/save', [FuncionarioController::class, 'save'])->name('funcionarios.save');
-Route::get('/funcionario/edit/{id}', [FuncionarioController::class, 'edit'])->name('funcionarios.edit');
-Route::put('/funcionario/update/{id}', [FuncionarioController::class, 'update'])->name('funcionarios.update');
-Route::delete('/funcionario/delete/{id}', [FuncionarioController::class, 'delete']);
+Route::get('/funcionario/register', [FuncionarioController::class, 'register'])->name('funcionario.register')->middleware('auth');
+Route::post('/funcionario/register/save', [FuncionarioController::class, 'save'])->name('funcionario.save')
+->middleware('auth');
+Route::get('/funcionario/edit/{id}', [FuncionarioController::class, 'edit'])->name('funcionario.edit')
+->middleware('auth');
+Route::put('/funcionario/update/{id}', [FuncionarioController::class, 'update'])->name('funcionario.update')
+->middleware('auth');
+Route::delete('/funcionario/delete/{id}', [FuncionarioController::class, 'delete'])->middleware('auth');

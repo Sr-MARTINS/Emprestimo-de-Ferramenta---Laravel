@@ -21,15 +21,6 @@ class FuncionarioController extends Controller
 
     public function save(FuncionarioRequest $request)
     {
-        // $funcionario = new Funcionario();
-
-        // $funcionario->nome      = $request->nome;
-        // $funcionario->apelido   = $request->apelido;
-        // $funcionario->cpf       = $request->cpf;
-        // $funcionario->setor     = $request->setor;
-        // $funcionario->status    = $request->status;
-
-        // $funcionario->save();
         Funcionario::create($request->all());
         
         return redirect('/funcionario')->with(['success' => 'Funcionario cadastrado com sucesso!']);
@@ -42,7 +33,7 @@ class FuncionarioController extends Controller
         return view('funcionario.register', ['EditFuncionario' => $EditFuncionario]);
     }
 
-    public function update(Request $request, $id)
+    public function update(FuncionarioRequest $request, $id)
     {
         $funcionario = Funcionario::findOrFail($id);
         $funcionario->update($request->all());
