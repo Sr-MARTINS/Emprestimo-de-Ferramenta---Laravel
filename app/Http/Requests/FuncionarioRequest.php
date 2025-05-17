@@ -24,7 +24,7 @@ class FuncionarioRequest extends FormRequest
         return [
             'nome'   => 'required|min:3|max:50',
             'cpf'    => 'required|size:11',
-            'setor'  => 'required|min:5|max:50',
+            'setor'  => 'required|min:3|max:50',
             'status' => 'required'
         ];
     }

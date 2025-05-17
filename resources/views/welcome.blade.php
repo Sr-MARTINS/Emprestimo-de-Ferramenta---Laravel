@@ -5,12 +5,7 @@
 @section('content')
 
     <div>
-        <div style="margin:2rem auto">
-            @if (session('success'))
-                <div class="container alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <div style="margin:2rem auto">            
             <h2 style="text-align: center;">Lista de Ferramenta</h2>
         </div>
         <div style="width:80%; margin:auto; ">

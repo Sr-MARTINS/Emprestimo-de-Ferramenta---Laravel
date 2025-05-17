@@ -17,4 +17,5 @@ Route::delete('ferramenta/devolver/{id}', [FerramentController::class, 'devolver
 Route::get('/funcionario', [FuncionarioController::class, 'index']);
 Route::get('/funcionario/register', [FuncionarioController::class, 'register']);
 Route::post('/funcionario/register/save', [FuncionarioController::class, 'save']);
+Route::get('/funcionario/edit/{id}', [FuncionarioController::class, 'edit']);
 Route::delete('/funcionario/delete/{id}', [FuncionarioController::class, 'delete']);

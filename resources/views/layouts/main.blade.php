@@ -19,18 +19,14 @@
         
     </head>
     <body>
-         <header style="display: flex; align-items:center; justify-content:space-between">
+        <header style="display: flex; align-items:center; justify-content:space-between">
             <nav class="nav" >
                 <a class="nav-link active" aria-current="page" href="/">Ferramentas</a>
                 <a class="nav-link" href="/ferramenta/create">Cadastrar Ferramenta</a>
 
                 @auth
                     <a class="nav-link" href="/dashboard">Minhas Ferramentas</a>
-                    <form action="/logout" method="POST">
-                        @csrf
-                            <a class="nav-link" href="/logout" onclick="event.preventDefault(); 
-                                this.closest('form').submit();">Sair</a>
-                    </form>
+                    
                 @endauth
 
                 @guest
@@ -38,29 +34,35 @@
                     <a class="nav-link"  href="/register">Cadastrar</a>
                 @endguest
             </nav>
-            <!-- @auth
+            @auth
                 <div style="margin-right: 15px;">
-                    <button>
-                        Perfil
-                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #fff; color: #000; border:none">
+                            Funcionarios
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item active" href="/funcionario">Lista de funcionarios</a></li>
+                            <li><a class="dropdown-item" href="/funcionario/register">Cadastrar</a></li>
+                            <li>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); 
+                                        this.closest('form').submit();">Sair</a>
+                                </form>
+                            </li>
+                            
+                        </ul>
+                    </div>
                 </div>
-            @endauth -->
-            <div style="margin-right: 15px;">
-                <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Funcionarios
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item active" href="/funcionario">Lista de funcionarios</a></li>
-                    <li><a class="dropdown-item" href="/funcionario/register">Cadastrar</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-            </div>
-            </div>
-        </header>
+            @endauth
             
+        </header>
+        @if (session('success'))
+            <div class="container alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        
         <div>
             @yield('content')
         </div>

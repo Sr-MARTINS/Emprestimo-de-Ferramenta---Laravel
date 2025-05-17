@@ -30,7 +30,7 @@
                             <td>{{ $funcionario->setor    }}</td>
                             <td>{{ $funcionario->status  }}</td>
                             <td style="display: flex;">
-                                <a href="/funcionario/">
+                                <a href="/funcionario/edit/{{ $funcionario->id }}">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 
