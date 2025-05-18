@@ -60,7 +60,7 @@
                     <label for="setor" class="form-label">Status:</label>
                     <select name="status" class="form-control @error('status') is-invalid @enderror" style="width:39%;"
                         value="{{ old('status', $EditFuncionario->status ?? '' ) }}">
-                        <option value=""></option>
+                        <option value="">-- Selecione --</option>
                         <option value="ativo">Ativo</option>
                         <option value="intervalo">Intervalo</option>
                     </select>
