@@ -5,9 +5,11 @@
 @section('content')
 
     <div class="d-flex align-items-center justify-content-center flex-column">
-        <div style="margin: 1rem auto 2rem auto;">
-            <a href="/">Voltar</a>
+        <div style="margin: 1rem auto 2rem auto; display:flex; flex-direction:column">
             <h1>Cadastro de ferramenta</h1>
+            <div style="margin:.5rem 0 0 -4rem ;">
+                <a href="/" >Voltar</a>
+            </div>
         </div>
 
         <div class="d-flex align-items-center justify-content-center mx-auto mb-4">

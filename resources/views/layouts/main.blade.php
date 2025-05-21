@@ -18,43 +18,54 @@
     </head>
     <body>
         <header style="display: flex; align-items:center; justify-content:space-between">
-            <nav class="nav" >
-                <a class="nav-link active" aria-current="page" href="/">Ferramentas</a>
-                <a class="nav-link" href="/ferramenta/create">Cadastrar Ferramenta</a>
-                @auth
-                    <a class="nav-link" href="/dashboard">Minhas Ferramentas</a>
-                @endauth
-                
+            <nav class="nav" style="display: flex; align-items:center;">
+                <div class="dropdown">
+                    <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                        Ferramentas
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu">
+                        <li><a class="nav-link dropdown-item" href="/">
+                            Lista de ferramenta</a>
+                        </li>
+                        <li><a class="nav-link dropdown-item" href="/ferramenta/create">
+                            Cadastrar Ferramenta</a>
+                        </li>
+                        <li>
+                            @auth
+                                <a class="nav-link dropdown-item" href="/dashboard">Minhas Ferramentas</a>
+                            @endauth
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                        Funcionarios
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu">
+                        <li><a class="nav-link dropdown-item" href="/funcionario">
+                            Lista de funcionarios</a>
+                        </li>
+                        <li><a class="nav-link dropdown-item" href="/funcionario/register">
+                            Cadastrar Funcionario</a>
+                        </li>
+                    </ul>
+                </div>
+        
                 @guest
-                    <a class="nav-link" href="/login">Entrar</a>
+                    <a class="nav-link" href="/login">Login</a>
                     <a class="nav-link"  href="/register">Cadastrar</a>
-                @endguest
+                @endguest   
             </nav>
             @auth
                 <div style="margin-right: 15px;">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #fff; color: #000; border:none">
-                            Funcionarios
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item active" href="/funcionario">
-                                Lista de funcionarios</a>
-                            </li>
-                            <li><a class="dropdown-item" href="/funcionario/register">
-                                Cadastrar</a>
-                            </li>
-                            <li>
-                                <form action="/logout" method="POST">
-                                    @csrf
-                                    <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); 
-                                        this.closest('form').submit();">Sair</a>
-                                </form>
-                            </li>
-                            
-                        </ul>
-                    </div>
+                    <form action="/logout" method="POST"  >
+                        @csrf
+                            <a style="text-decoration: none;" href="/logout" onclick="event.preventDefault(); 
+                            this.closest('form').submit();">Sair</a>
+                    </form>
                 </div>
             @endauth
+            
             
         </header>
         @if (session('success'))
