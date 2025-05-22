@@ -24,7 +24,7 @@ class FuncionarioRequest extends FormRequest
         return [
             'nome'   => 'required|min:3|max:50',
             'cpf'    => 'required|size:11',
-            'setor'  => 'required|min:3|max:50',
+            'setor_id'  => 'required',
             'status' => 'required'
         ];
     }
@@ -39,9 +39,7 @@ class FuncionarioRequest extends FormRequest
             'cpf.required' => 'O campo com preenchimento obrigatorio',
             'cpf.size' => 'O cpf deve ter 11 caracteres',
             
-            'setor.required' => 'O campo com preenchimento obrigatorio',
-            'setor.min'      => 'O campo deve ter no minimo 5 caracteres',
-            'setor.max'      => 'O campo deve ter no max 50 caracteres',
+            'setor_id.required' => 'O campo com preenchimento obrigatorio',
         
             'status.required' => 'O campo deve ser preenchido',
         ];

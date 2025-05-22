@@ -4,19 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FuncionarioRequest;
 use App\Models\Funcionario;
+use App\Models\Setor;
 use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
 {
     public function index()
     {
-        $funcionarios = Funcionario::all();
+        $funcionarios = Funcionario::all()->load('fsetor');
+
         return view('painel', ['funcionarios' => $funcionarios]);
     }
 
     public function register()
     {
-        return view('funcionario.register');
+        $setores = Setor::all();
+
+        return view('funcionario.register', ['setores' => $setores]);
     }
 
     public function save(FuncionarioRequest $request)
@@ -28,9 +32,11 @@ class FuncionarioController extends Controller
 
     public function edit($id)
     {
+        $setores = Setor::all();
+
         $EditFuncionario = Funcionario::findOrfail($id);
         // dd($EditFuncionario);
-        return view('funcionario.register', ['EditFuncionario' => $EditFuncionario]);
+        return view('funcionario.register', ['EditFuncionario' => $EditFuncionario, 'setores' => $setores]);
     }
 
     public function update(FuncionarioRequest $request, $id)

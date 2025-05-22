@@ -27,7 +27,7 @@
                             <td>{{ $funcionario->nome    }}</td>
                             <td>{{ $funcionario->apelido == '' ? 'null' : $funcionario->apelido }}</td>
                             <td>{{ $funcionario->cpf     }}</td>
-                            <td>{{ $funcionario->setor    }}</td>
+                            <td>{{ $funcionario->fsetor->nome }}</td>
                             <td>{{ $funcionario->status  }}</td>
                             <td style="display: flex;">
                                 <a href="/funcionario/edit/{{ $funcionario->id }}">

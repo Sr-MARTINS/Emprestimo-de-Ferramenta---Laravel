@@ -48,8 +48,15 @@
                 </div>
 
                 <div class="mb-3">
+                    <!-- {{ $setores }} -->
                     <label for="setor" class="form-label">Setor:</label>
-                    <input type="text" name="setor"class="form-control @error('setor') is-invalid @enderror" value="{{ old('setor', $EditFuncionario->setor ?? '' ) }}">
+                    <!-- <input type="text" name="setor"class="form-control @error('setor') is-invalid @enderror" value="{{ old('setor', $EditFuncionario->setor ?? '' ) }}"> -->
+                     <select class="form-control" name="setor_id">
+                        <option value=""> -- Selecione --</option>
+                        @foreach($setores as $setor)
+                            <option value="{{ $setor->id }}"> {{ $setor->nome }}</option>
+                        @endforeach
+                     </select>
 
                     @error('setor')
                         <div class="text-danger">{{ $message }}</div>
@@ -60,9 +67,15 @@
                     <label for="setor" class="form-label">Status:</label>
                     <select name="status" class="form-control @error('status') is-invalid @enderror" style="width:39%;"
                         value="{{ old('status', $EditFuncionario->status ?? '' ) }}">
-                        <option value="">-- Selecione --</option>
-                        <option value="ativo">Ativo</option>
-                        <option value="intervalo">Intervalo</option>
+                        @if(isset($EditFuncionario))
+                            <option value="ativo" {{ $EditFuncionario->status == 'ativo' ? 'selected' : ''}} > Ativo</option>
+                            <option value="inativo" {{empty($EditFuncionario->status) == 'inativo' ? 'selected' : '' }} > Inativo</option>
+                        @else
+                            <option value="">-- Selecione --</option>
+                            <option value="ativo">Ativo</option>
+                            
+                            <option value="inativo"> Inativo </option>
+                        @endif    
                     </select>
 
                     @error('status')

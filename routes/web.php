@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\FerramentController;
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\SetorController;
+use Illuminate\Foundation\Bootstrap\SetRequestForConsole;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FerramentController::class, 'index']);
@@ -23,3 +25,5 @@ Route::get('/funcionario/edit/{id}', [FuncionarioController::class, 'edit'])->na
 Route::put('/funcionario/update/{id}', [FuncionarioController::class, 'update'])->name('funcionario.update')
 ->middleware('auth');
 Route::delete('/funcionario/delete/{id}', [FuncionarioController::class, 'delete'])->middleware('auth');
+
+Route::get('/setores', [SetorController::class, 'detalhes']);
