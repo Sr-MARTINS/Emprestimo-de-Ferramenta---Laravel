@@ -21,7 +21,7 @@
                 <label for="descricao" class="form-label">Descricao:</label>
                 <textarea class="form-control @error('descicao') is-invalid @enderror" name="descricao" placeholder="Digite uma descrição" value="{{ old('descricao') }}"></textarea>
                 @error('descricao')
-                    <div class="text-dangger"> {{ $message }}</div>
+                    <div class="text-danger"> {{ $message }}</div>
                 @enderror
             </div>
             

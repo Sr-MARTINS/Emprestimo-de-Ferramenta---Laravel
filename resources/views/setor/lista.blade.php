@@ -20,17 +20,11 @@
                         <tr>
                             <th scope="row">{{ $setor->id }}</th>
                             <td>{{ $setor->nome    }}</td>
-                            <!-- <td>
-                                <ul>
-                                    @foreach($setor->funcionarios as $funcionario)
-                                        <li> {{ $funcionario->nome }} </li>
-                                    @endforeach
-                                </ul>
-                            </td> -->
+                            
                             <td>
                                 <div style=" display:flex">
-                                    <button>
-                                        Detalhes
+                                    <button >
+                                        <a href="/setor/detalhes/{{$setor->id}}">Detalhes</a>
                                     </button>
 
                                     <form action="/setor/delete/{{ $setor->id }}" method="POST">

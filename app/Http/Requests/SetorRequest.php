@@ -23,7 +23,7 @@ class SetorRequest extends FormRequest
     {
         return [
             'nome' => 'required|min:3|max:50', 
-            'descricao' => 'max:100'
+            'descricao' => 'max:50'
         ];
     }
     public function messages()
@@ -33,7 +33,7 @@ class SetorRequest extends FormRequest
             'nome.min' => 'O campo deve ter no minino 3 caracteres',
             'nome.max' => 'O campo deve ter no maximo 50 caracteres',
 
-            'descricao.max' => 'O campo deve ter no maximo 100 caracteres'
+            'descricao.max' => 'O campo deve ter no maximo 50 caracteres'
         ];
     }
 }

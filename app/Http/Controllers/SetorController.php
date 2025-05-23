@@ -6,6 +6,8 @@ use App\Http\Requests\SetorRequest;
 use App\Models\Setor;
 use Illuminate\Http\Request;
 
+use function Psy\bin;
+
 class SetorController extends Controller
 {
     public function detalhes()
@@ -33,5 +35,18 @@ class SetorController extends Controller
         $delete->delete();
 
         return redirect('/setores');
+    }
+
+    public function storeSetor($id)
+    {
+        $setor = Setor::find($id);
+
+        return view('setor.detalhe', ['setor' => $setor]);
+    }
+    public function edit($id)
+    {
+        $setor = Setor::find($id);
+
+        return view();
     }
 }
