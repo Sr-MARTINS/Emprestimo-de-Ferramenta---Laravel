@@ -8,7 +8,7 @@
         <h2 style="margin: 2rem auto; text-align:center;">Painel de Funcionarios</h2>
 
         <div style=" margin:0 0 0 7rem">
-            <table  class="table" style="width:90%";>
+            <table  class="table" style="width:90%">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

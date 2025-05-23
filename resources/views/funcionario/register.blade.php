@@ -54,7 +54,7 @@
                      <select class="form-control" name="setor_id">
                         <option value=""> -- Selecione --</option>
                         @foreach($setores as $setor)
-                            <option value="{{ $setor->id }}"> {{ $setor->nome }}</option>
+                            <option value="{{ $setor->id }}" {{ isset($EditFuncionario) && $setor->id == $EditFuncionario->setor_id ? 'selected' : ''}}> {{ $setor->nome }}</option>
                         @endforeach
                      </select>
 
@@ -69,7 +69,7 @@
                         value="{{ old('status', $EditFuncionario->status ?? '' ) }}">
                         @if(isset($EditFuncionario))
                             <option value="ativo" {{ $EditFuncionario->status == 'ativo' ? 'selected' : ''}} > Ativo</option>
-                            <option value="inativo" {{empty($EditFuncionario->status) == 'inativo' ? 'selected' : '' }} > Inativo</option>
+                            <option value="inativo" {{!empty($EditFuncionario->status) == 'inativo' ? 'selected' : '' }} > Inativo</option>
                         @else
                             <option value="">-- Selecione --</option>
                             <option value="ativo">Ativo</option>

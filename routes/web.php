@@ -27,3 +27,6 @@ Route::put('/funcionario/update/{id}', [FuncionarioController::class, 'update'])
 Route::delete('/funcionario/delete/{id}', [FuncionarioController::class, 'delete'])->middleware('auth');
 
 Route::get('/setores', [SetorController::class, 'detalhes']);
+Route::get('/setores/register', [SetorController::class, 'create']);
+Route::post('/setor/register/save', [SetorController::class, 'save']);
+Route::delete('/setor/delete/{id}', [SetorController::class, 'destroy']);

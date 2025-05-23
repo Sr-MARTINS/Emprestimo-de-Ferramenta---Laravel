@@ -3,8 +3,11 @@
 @section('title', "Cadastro de funcionario")
 
 @section('content')
+    <div>
+        <h2 style="margin: 2rem auto; text-align:center;">Painel de Setor</h2>
 
-    <table  class="table" style="width:90%";>
+        <div style=" margin:0 0 0 15rem">
+            <table  class="table" style="width:90%">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -17,17 +20,32 @@
                         <tr>
                             <th scope="row">{{ $setor->id }}</th>
                             <td>{{ $setor->nome    }}</td>
-                            <td>
+                            <!-- <td>
                                 <ul>
                                     @foreach($setor->funcionarios as $funcionario)
                                         <li> {{ $funcionario->nome }} </li>
                                     @endforeach
                                 </ul>
+                            </td> -->
+                            <td>
+                                <div style=" display:flex">
+                                    <button>
+                                        Detalhes
+                                    </button>
+
+                                    <form action="/setor/delete/{{ $setor->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" >
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
-                           
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-
+        </div>
+    </div>
 @endsection

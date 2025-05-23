@@ -48,23 +48,39 @@
                         <li><a class="nav-link dropdown-item" href="/funcionario/register">
                             Cadastrar Funcionario</a>
                         </li>
+                        
                     </ul>
                 </div>
-        
-                @guest
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link"  href="/register">Cadastrar</a>
-                @endguest   
+                <div class="dropdown">
+                    <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                        Setores
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu">
+                        <li><a class="nav-link dropdown-item" href="/setores">
+                            Lista de Setores</a>
+                        </li>
+                        <li><a class="nav-link dropdown-item" href="/setores/register">
+                            Cadastrar Setor</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- <a class="nav-link"  href="/register">Setores</a> -->
+
             </nav>
-            @auth
-                <div style="margin-right: 15px;">
+            <div style="margin-right: 15px; display:flex">
+                @auth
                     <form action="/logout" method="POST"  >
                         @csrf
                             <a style="text-decoration: none;" href="/logout" onclick="event.preventDefault(); 
                             this.closest('form').submit();">Sair</a>
                     </form>
-                </div>
-            @endauth
+                @endauth
+                @guest
+                    <a  href="/login" style="text-decoration: none; margin: 0 7px 0 -10px;">Login</a>
+                    <a  href="/register" style="text-decoration: none;">Cadastrar</a>
+                @endguest   
+            </div>
             
             
         </header>
