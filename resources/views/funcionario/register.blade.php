@@ -6,11 +6,7 @@
 
     <div class="d-flex align-items-center justify-content-center flex-column">
         <div  style="margin: 2rem auto; text-align:center;">
-            @if(isset($EditFuncionario))
-                <h2>Edição do funcionario: {{ $EditFuncionario->nome }}</h2>
-            @else
-                <h2>Cadastro de funcionario</h2>
-            @endif
+            <h2> {{ isset($EditFuncionario) ? 'Edição do funcionario' : 'Cadastro de funcionario' }} </h2>
         </div>
 
         <div class="mx-auto mb-4" style="width: 710px;">

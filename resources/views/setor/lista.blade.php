@@ -38,6 +38,10 @@
                             </td>
                         </tr>
                     @endforeach
+                    
+                    @foreach ($setores as $setor)
+                    @endforeach
+
                 </tbody>
             </table>
         </div>

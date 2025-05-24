@@ -23,24 +23,6 @@ class FerramentController extends Controller
 
     public function store(FerramentaCreateRequest $request)
     {
-        // $request->validate(
-        //     [
-        //         'inFerramenta' => "required|min:5|max:50",
-        //         'inDescription' => "required|min:3|max:50",
-        //         'status' => "required"
-        //     ], 
-            // [
-            //     'inFerramenta.required' => 'O campo é obrigatorio', 
-            //     'inFerramenta.min' => 'O campo espera no minino 5 caracteres', 
-            //     'inFerramenta.max' => 'O campo espera no maximo 50 caracteres' ,
-
-            //     'inDescription.required' => 'O campo é obrigatorio',
-            //     'inDescription.min' => 'O campo espera no minimo 3 caracteres',
-            //     'inDescription.max' => 'O campo espera no maximo 50 caracteres',
-
-            //     'status.required' => 'Preencha o campo'
-            // ]
-        // );
 
         $ferramenta = new Ferramenta();
         
@@ -66,7 +48,7 @@ class FerramentController extends Controller
             return redirect('/dashboard');
         }
 
-        return view('ferramenta.edit', ['editFerrament' => $editFerrament]);
+        return view('ferramenta.create', ['editFerrament' => $editFerrament]);
     }
     public function update(FerramentaCreateRequest $request, $id)
     {
